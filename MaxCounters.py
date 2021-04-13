@@ -3,28 +3,15 @@
 
 def solution(N, A):
     # write your code in Python 3.6
-    # time complexity: O(N*M)
-    # performance: 77 %
     counters = [0] * N
-    for i in A:
-        if i >= 1 and i <= N :
-            counters[i-1] += 1
-        elif i == N + 1:
-            counters = [max(counters)] * N
-        #print(counters)
-    return(counters)
-    pass
-
-def solution(N, A):
-    # write your code in Python 3.6
-    # performance: 77 %
-    counters = [0] * N
-    max_counter = 0
-    for i in A:
-        if i >= 1 and i <= N :
-            counters[i-1] += 1
-            max_counter = max(max_counter, counters[i-1])
-        elif i == N + 1:
-            counters = [max_counter] * N
-    return(counters)
-    pass
+    max_result = current_max = 0
+    for num in A :
+        if num <= N :
+            if counters[num -1] < max_result :
+                counters[num -1] = max_result
+            counters[num -1] += 1
+            if counters[num -1] > current_max:
+                current_max = counters[num -1]
+        else :
+            max_result = current_max 
+    return [max(i, max_result) for i in counters]
