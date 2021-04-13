@@ -3,6 +3,7 @@
 
 def solution(N, A):
     # write your code in Python 3.6
+    #  time complexity: O(N + M)
     counters = [0] * N
     max_result = current_max = 0
     for num in A :
